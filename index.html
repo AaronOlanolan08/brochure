@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,98 +13,238 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #D7B4A1;
             color: white;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            /* Allows the content to wrap to the next line */
         }
+
         .header-left {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Allows the content to wrap to the next line */
         }
+
         .header-sereneville {
-            margin: 0 10px 0 0;
-            margin-left: 20px;
+            margin-top: 30px;
+            margin-left: 30px;
+            flex: 1 1 auto;
+            min-width: 200px;
+            /* Allows the element to grow and shrink */
+
         }
+
         .header-left p {
             margin: 10px;
+            margin-left: 30px;
+            margin-top: 30px;
             font-style: italic;
-            font-family: '';
             color: #523A2E;
-            margin-left: 80px;
             font-size: 20px;
+            flex: 1 1 auto;
+            /* Allows the element to grow and shrink */
+            min-width: 200px;
+            /* Minimum width to ensure readability */
         }
+
         .search-bar {
             display: flex;
             align-items: center;
-            margin-left: 40px; /* Adjust as needed for spacing */
-            position: relative; /* Needed for positioning the icon */
+            margin-left: 40px;
+            margin-top: 30px;
+            position: relative;
+            flex: 1 1 auto;
+            /* Allows the element to grow and shrink */
+            min-width: 200px;
+            /* Minimum width to ensure readability */
         }
+
         .search-bar input {
             padding: 10px;
-            padding-right: 40px; /* Add space for the icon */
+            padding-right: 30px;
+            /* Add space for the icon */
             border: none;
             border-radius: 20px;
-            width: 500px; /* Adjust this value to make the search bar longer */
+            width: 100%;
+            /* Full width to make it responsive */
+            box-sizing: border-box;
+            /* Ensures padding is included in width */
         }
+
         .search-bar i {
             position: absolute;
             right: 10px;
             font-size: 20px;
             color: #4a4a4a;
         }
+
         .contact {
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
-            margin-left: 10px;
+            margin-left: 40px;
+            margin-top: 30px;
             color: #523A2E;
+            flex: 1 1 auto;
+            /* Allows the element to grow and shrink */
         }
+
         .contact div {
-            margin-bottom: 5px; /* Optional: add space between lines */
+            margin-bottom: 5px;
             font-family: sans-serif;
         }
-        nav {
-            background-color: #A29F74;
-            padding: 10px;
-            text-align: center;
+
+        /* Media queries for smaller screens */
+        @media (max-width: 1000px) {
+            .header-left {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-sereneville {
+                margin-left: 40px;
+                margin-bottom: 10px;
+                align-items: center;
+            }
+
+            .header-left p {
+                margin-left: 0;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                width: 100%;
+                /* Full width on smaller screens */
+            }
+
+            .contact {
+                margin-left: 0;
+            }
         }
-        nav a {
+
+        .navbar {
+            background-color: #A29F74;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
             color: black;
-            margin: 0 15px;
+            text-align: center;
+            padding: 14px 16px;
             text-decoration: none;
         }
+        .navbar a:hover {
+            color: whitesmoke;
+        }
+        .navbar .icon {
+            display: none;
+        }
+        @media screen and (max-width: 600px) {
+            .navbar a:not(:first-child) {display: none;}
+            .navbar a.icon {
+                float: right;
+                display: block;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .navbar.responsive {position: relative;}
+            .navbar.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .navbar.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        @media screen and (max-width: 600px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+        }
+
         .content {
             display: flex;
             justify-content: space-between;
             padding: 20px;
         }
-        .featured, .properties, .amenities {
+
+        .featured,
+        .properties,
+        .amenities {
             width: 48%;
         }
-        .property, .amenity {
+
+        .property,
+        .amenity {
             background-color: white;
             border: 1px solid #d4a076;
             margin: 10px 0;
             padding: 10px;
         }
-        .property img, .amenity img {
+
+        .property img,
+        .amenity img {
             max-width: 100%;
             height: auto;
         }
+
         .filter {
             background-color: #aab389;
             padding: 20px;
             margin: 20px 0;
         }
-        .filter input, .filter select {
+
+        .filter input,
+        .filter select {
             display: block;
             width: 100%;
             padding: 10px;
             margin: 10px 0;
         }
+
         .filter button {
             background-color: #d4a076;
             color: white;
@@ -113,7 +254,16 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
 </head>
+
 <body>
     <header>
         <div class="header-left">
@@ -125,21 +275,33 @@
                 <input type="text" placeholder="Search">
                 <i class="fas fa-search"></i>
             </div>
-        </div>
-        <div class="contact">
-            <div>Contact No.: +63 123 - 456 - 7890</div>
-            <div>E-mail: info@serenevilleproperties.com</div>
-            <div>website: serenevilleproperties.com</div>
+            <div class="contact">
+                <div>Contact No.: +63 123 - 456 - 7890</div>
+                <div>E-mail: info@serenevilleproperties.com</div>
+                <div>website: serenevilleproperties.com</div>
+            </div>
         </div>
     </header>
-    <nav>
+    <div class="navbar" id="myNavbar">
         <a href="#">Home</a>
         <a href="#">About Us</a>
         <a href="#">All Property Listing</a>
         <a href="#">House For Sale</a>
         <a href="#">House For Rent</a>
         <a href="#">Contact Us</a>
-    </nav>
+        <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">All Property Listing</a>
+        <a href="#">House For Sale</a>
+        <a href="#">House For Rent</a>
+        <a href="#">Contact Us</a>
+    </div>
     <div class="content">
         <div class="featured">
             <h2>Featured</h2>
@@ -198,4 +360,14 @@
         </div>
     </div>
 </body>
+<script>
+    function toggleNavbar() {
+        var x = document.getElementById("myNavbar");
+        if (x.className === "navbar") {
+            x.className += " responsive";
+        } else {
+            x.className = "navbar";
+        }
+    }
+</script>
 </html>
